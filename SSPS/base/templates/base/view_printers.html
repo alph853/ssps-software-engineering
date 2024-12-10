@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Container styles */
+        .printer-container {
+            padding: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header buttons */
+        .header-actions {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+        }
+
+        .btn-add {
+            background-color: #28a745;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+        }
+
+        /* Table styles */
+        .table-container {
+            overflow-y: auto;
+            max-height: 300px;
+            border: 1px solid #ccc;
+        }
+
+        .printer-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .printer-table th,
+        .printer-table td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .printer-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .printer-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Status styling */
+        .status {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 20px;
+            text-align: center;
+            color: white;
+            display: inline-block;
+        }
+
+        .status.full {
+            background-color: #17a2b8;
+        }
+
+        .status.disabled {
+            background-color: #ffc107;
+        }
+
+        .status.malfunction {
+            background-color: #dc3545;
+        }
+
+        .status.enabled {
+            background-color: #28a745;
+        }
+
+        /* Edit button */
+        .edit-btn {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .edit-btn:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="printer-container">
+        <div class="text-end">
+            <a href="{% url 'spso_add_printer' %}" class="btn btn-add">+ Thêm máy in</a>
+        </div>
+        <div class="text-center">
+            <table class="printer-table">
+                <thead>
+                    <tr>
+                        <th>Máy in</th>
+                        <th>Hãng</th>
+                        <th>Cơ sở</th>
+                        <th>Tòa</th>
+                        <th>Phòng</th>
+                        <th>Trạng thái</th>
+                        <th>Tùy chọn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for printer, status_class in printers %}
+                    <tr>
+                        <td>{{ printer.id }}</td>
+                        <td>{{ printer.brand }}</td>
+                        <td>{{ printer.campus }}</td>
+                        <td>{{ printer.building }}</td>
+                        <td>{{ printer.room }}</td>
+                        <td>
+                            <span class="status {{status_class}}">{{ printer.status }}</span>
+                        </td>
+                        <td>
+                            <div class="text-start">
+                                <a href="{% url 'spso_edit_printer' printer.id %}" class="edit-btn">✏️</a>
+                                <a href="{% url 'spso_delete_printer' printer.id %}" class="delete-btn">🗑️</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Printing Logs</title>
+  <style>
+    body {
+      font-family: 'Inter Tight', Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #0563bb;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #eaf4ff;
+    }
+
+    .btn-back {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #0563bb;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn-back:hover {
+      background-color: #034a8f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Printing Logs</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Tài liệu in</th>
+          <th>Số trang đã dùng</th>
+          <th>Bắt đầu</th>
+          <th>Kết thúc</th>
+          <th>Cỡ trang in</th>
+          <th>Số bản sao</th>
+          <th>Máy in</th>
+        </tr>
+      </thead>
+      <tbody id="logsTableBody">
+        <!-- Logs data will be inserted here dynamically -->
+      </tbody>
+    </table>
+    <a href="index.html#services" class="btn-back">Back to Services</a>
+  </div>
+
+  {%  %}
+</body>
+</html>

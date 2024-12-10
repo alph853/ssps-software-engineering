@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy More Pages</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Include Google Fonts (example: Inter Tight) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter Tight', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    p {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #555;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input,
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    button {
+      background-color: #0563bb;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button:hover {
+      background-color: #034a8f;
+    }
+    .info-group {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .info-group span {
+      font-size: 1.1rem;
+      color: #555;
+    }
+    .cost {
+      font-weight: bold;
+      color: #0563bb;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Buy More Pages</h1>
+    <p>Select the number of pages you'd like to purchase below.</p>
+    <div class="info-group">
+      <span>Current Pages Owned: <strong id="current-pages">100</strong></span>
+      <span>Total Cost: <strong id="total-cost" class="cost">$0</strong></span>
+    </div>
+    <form action="/process-payment" method="POST">
+      <div class="form-group">
+        <label for="pages">Number of Pages</label>
+        <input type="number" id="pages" name="pages" min="1" max="1000" required>
+      </div>
+      <button type="submit">Proceed to Payment</button>
+    </form>
+  </div>
+
+  <script>
+    // Initial current pages and price per page
+    const currentPages = 100; // Example value
+    const pricePerPage = 0.05; // Example cost per page
+
+    // Update current pages display
+    document.getElementById("current-pages").textContent = currentPages;
+
+    // Event listener for dynamic cost calculation
+    const pagesInput = document.getElementById("pages");
+    const totalCostDisplay = document.getElementById("total-cost");
+
+    pagesInput.addEventListener("input", () => {
+      const pagesToBuy = parseInt(pagesInput.value) || 0;
+      const totalCost = (pagesToBuy * pricePerPage).toFixed(2);
+      totalCostDisplay.textContent = `$${totalCost}`;
+    });
+  </script>
+</body>
+</html>
