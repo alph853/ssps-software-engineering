@@ -62,13 +62,8 @@ class PrinterForm(forms.ModelForm):
         })
     )
 
+
 class PrintJobForm(forms.Form):
-    student = forms.ModelChoiceField(
-        queryset=Student.objects.all(),
-        widget=forms.Select(attrs={
-            'class': 'form-select'
-        }),
-    )
     printer = forms.ModelChoiceField(
         queryset=Printer.objects.all(),
         widget=forms.Select(attrs={
@@ -77,7 +72,6 @@ class PrintJobForm(forms.Form):
     )
     file = forms.FileField(
         widget=forms.ClearableFileInput(attrs={
-            'label': 'Chọn file',
             'class': 'form-control',
             'accept': 'image/png, image/jpeg, image/jpg, application/pdf, text/plain'
         }),
@@ -110,31 +104,24 @@ class PrintJobForm(forms.Form):
         })
     )
 
-    campus = forms.ChoiceField(
-        choices=Campus,
-        widget=forms.Select(attrs={
-            'class': 'form-select',
-        }),
-    )
-
-    def save(self):
-        file_path = self.file.path
+    def save(self, student_id):
+        file_path = self.cleaned_data['file'].name
         file_extension = os.path.splitext(file_path)[1].lower()
 
         if file_extension == '.pdf':
-            reader = PdfReader(file_path)
+            reader = PdfReader(self.cleaned_data['file'])
             num_pages = len(reader.pages)
-        elif file_extension in ['.jpg', '.jpeg', '.png']:
+        elif file_extension in ['.jpg', '.jpeg', '.png', '.txt']:
             num_pages = 1
-        elif file_extension == '.txt':
-            lines_per_page = 50
-            with open(file_path, 'r') as file:
-                lines = file.readlines()
-                num_lines = len(lines)
-                num_pages = math.ceil(num_lines / lines_per_page)
+
+        num_pages *= self.cleaned_data['no_copies']
+        student = Student.objects.get(student_id=student_id)
+        if student.page_balance < num_pages:
+            return f'Số trang in ({num_pages}) vượt quá số trang còn lại ({student.page_balance}).'
+        student.page_balance -= num_pages
 
         return PrintJob.objects.create(
-            student=self.cleaned_data['student'],
+            student_id=student_id,
             printer=self.cleaned_data['printer'],
             num_pages=num_pages,
             file_name=os.path.basename(self.cleaned_data['file'].name),
@@ -142,3 +129,4 @@ class PrintJobForm(forms.Form):
             page_sizes=self.cleaned_data['page_sizes'],
             one_sided=self.cleaned_data['one_sided']
         )
+

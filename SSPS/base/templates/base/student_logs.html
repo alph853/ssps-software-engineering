@@ -71,26 +71,46 @@
 </head>
 <body>
   <div class="container">
-    <h1>Printing Logs</h1>
-    <table>
+<body>
+  <div class="container">
+    <h1><strong>Lịch sử in</strong></h1>
+    <div style="overflow-x:auto; max-height: 820px; overflow-y: auto;">
+      <table>
       <thead>
-        <tr>
-          <th>Tài liệu in</th>
-          <th>Số trang đã dùng</th>
-          <th>Bắt đầu</th>
-          <th>Kết thúc</th>
-          <th>Cỡ trang in</th>
-          <th>Số bản sao</th>
-          <th>Máy in</th>
-        </tr>
+      <tr>
+        <th>Tài liệu in</th>
+        <th>Số trang đã dùng</th>
+        <th>Bắt đầu</th>
+        <th>Kết thúc</th>
+        <th>Cỡ trang in</th>
+        <th>Số bản sao</th>
+        <th>Máy in</th>
+      </tr>
       </thead>
       <tbody id="logsTableBody">
-        <!-- Logs data will be inserted here dynamically -->
+      {% for log in logs %}
+      <tr>
+        <td class="truncate">{{ log.file_name }}</td>
+        <td>{{ log.num_pages }}</td>
+        <td>{{ log.start_time }}</td>
+        <td>{{ log.end_time }}</td>
+        <td>{{ log.page_sizes }}</td>
+        <td>{{ log.no_copies }}</td>
+        <td>{{ log.printer }}</td>
+      </tr>
+      {% endfor %}
       </tbody>
-    </table>
-    <a href="index.html#services" class="btn-back">Back to Services</a>
+      </table>
+    </div>
+    <style>
+      .truncate {
+      max-width: 250px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      }
+    </style>
+    <a href="{% url 'student_home' pk=student_id %}" class="btn-back">Về trang chủ</a>
   </div>
-
-  {%  %}
 </body>
 </html>

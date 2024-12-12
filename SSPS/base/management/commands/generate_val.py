@@ -3,247 +3,321 @@ import random
 
 students: list[Student] = [
     Student(
+        student_id="2252853",
+        fname="Trung",
+        lname="Do Thanh",
+        email="trung.do853@hcmut.edu.vn",
+        page_balance=200,
+        username="trung.do853",
+        password="88888888"
+    ),
+    Student(
         student_id="2252001",
         fname="An",
         lname="Nguyen Van",
         email="an.nguyen@hcmut.edu.vn",
-        page_balance=200
+        page_balance=100,
+        username="an.nguyen",
+        password="88888888"
     ),
     Student(
         student_id="2252002",
         fname="Binh",
         lname="Tran Thi",
         email="binh.tran@hcmut.edu.vn",
-        page_balance=200
+        page_balance=2,
+        username="binh.tran",
+        password="88888888"
     ),
     Student(
         student_id="2252003",
         fname="Chien",
         lname="Le Van",
         email="chien.le@hcmut.edu.vn",
-        page_balance=200
+        page_balance=174,
+        username="chien.le",
+        password="88888888"
     ),
     Student(
         student_id="2252004",
         fname="Dung",
         lname="Pham Thi",
         email="dung.thi@hcmut.edu.vn",
-        page_balance=200
+        page_balance=333,
+        username="dung.thi",
+        password="88888888"
     ),
     Student(
         student_id="2252005",
         fname="Hoa",
         lname="Nguyen Thi",
         email="hoa.nguyen@hcmut.edu.vn",
-        page_balance=200
+        page_balance=1200,
+        username="hoa.nguyen",
+        password="88888888"
     ),
     Student(
         student_id="2252006",
         fname="Long",
         lname="Pham Van",
         email="long.pham@hcmut.edu.vn",
-        page_balance=200
+        page_balance=401,
+        username="long.pham",
+        password="88888888"
     ),
     Student(
         student_id="2252007",
         fname="Minh",
         lname="Le Thi",
         email="minh.le@hcmut.edu.vn",
-        page_balance=200
+        page_balance=77,
+        username="minh.le",
+        password="88888888"
     ),
     Student(
         student_id="2252008",
         fname="Trang",
         lname="Tran Thi",
         email="trang.tran@hcmut.edu.vn",
-        page_balance=200
+        page_balance=36,
+        username="trang.tran",
+        password="88888888"
     ),
     Student(
         student_id="2252009",
         fname="Thang",
         lname="Hoang Van",
         email="thang.hoang@hcmut.edu.vn",
-        page_balance=200
+        page_balance=12,
+        username="thang.hoang",
+        password="88888888"
     ),
     Student(
         student_id="2252010",
         fname="Anh",
         lname="Vu",
         email="anh.vu@hcmut.edu.vn",
-        page_balance=200
+        page_balance=200,
+        username="anh.vu",
+        password="88888888"
     ),
     Student(
         student_id="2252011",
         fname="Huong",
         lname="Bui Thi",
         email="huong.bui@hcmut.edu.vn",
-        page_balance=200
+        page_balance=330,
+        username="huong.bui",
+        password="88888888"
     ),
     Student(
         student_id="2252012",
         fname="Lan",
         lname="Do",
         email="lan.do@hcmut.edu.vn",
-        page_balance=200
+        page_balance=1011,
+        username="lan.do",
+        password="88888888"
     ),
     Student(
         student_id="2252013",
         fname="Quang",
         lname="Pham",
         email="quang.pham@hcmut.edu.vn",
-        page_balance=200
+        page_balance=4,
+        username="quang.pham",
+        password="88888888"
     ),
     Student(
         student_id="2252014",
         fname="Tu",
         lname="Tran",
         email="tu.tran@hcmut.edu.vn",
-        page_balance=200
+        page_balance=91,
+        username="tu.tran",
+        password="88888888"
     ),
-]
-
-students.extend([
     Student(
         student_id="2252015",
         fname="Bao",
         lname="Nguyen Van",
         email="bao.nguyen@hcmut.edu.vn",
-        page_balance=200
+        page_balance=9,
+        username="bao.nguyen",
+        password="88888888"
     ),
     Student(
         student_id="2252016",
         fname="Cuong",
         lname="Tran Dinh Manh",
         email="cuong.tran@hcmut.edu.vn",
-        page_balance=200
+        page_balance=11,
+        username="cuong.tran",
+        password="88888888"
     ),
     Student(
         student_id="2252017",
         fname="Dai",
         lname="Le Vinh",
         email="dai.le@hcmut.edu.vn",
-        page_balance=200
+        page_balance=40,
+        username="dai.le",
+        password="88888888"
     ),
     Student(
         student_id="2252018",
         fname="Giang",
         lname="Pham Thi Huong",
         email="giang.pham@hcmut.edu.vn",
-        page_balance=200
+        page_balance=1,
+        username="giang.pham",
+        password="88888888"
     ),
     Student(
         student_id="2252019",
         fname="Hieu",
         lname="Hoang Van Ngoc",
         email="hieu.hoang@hcmut.edu.vn",
-        page_balance=200
+        page_balance=0,
+        username="hieu.hoang",
+        password="88888888"
     ),
     Student(
         student_id="2252020",
         fname="Khanh",
         lname="Vu Minh",
         email="khanh.vu@hcmut.edu.vn",
-        page_balance=200
+        page_balance=13,
+        username="khanh.vu",
+        password="88888888"
     ),
     Student(
         student_id="2252021",
         fname="Linh",
         lname="Bui Lan Phuong",
         email="linh.bui@hcmut.edu.vn",
-        page_balance=200
+        page_balance=44,
+        username="linh.bui",
+        password="88888888"
     ),
     Student(
         student_id="2252022",
         fname="Mai",
         lname="Do Quang",
         email="mai.do@hcmut.edu.vn",
-        page_balance=200
+        page_balance=70,
+        username="mai.do",
+        password="88888888"
     ),
     Student(
         student_id="2252023",
         fname="Nam",
         lname="Nguyen Trinh Tran",
         email="nam.nguyen@hcmut.edu.vn",
-        page_balance=200
+        page_balance=100,
+        username="nam.nguyen",
+        password="88888888"
     ),
     Student(
         student_id="2252024",
         fname="Phuc",
         lname="Tran Le Tien",
         email="phuc.tran@hcmut.edu.vn",
-        page_balance=200
+        page_balance=201,
+        username="phuc.tran",
+        password="88888888"
     ),
     Student(
         student_id="2252025",
         fname="Quyen",
         lname="Le Song",
         email="quyen.le@hcmut.edu.vn",
-        page_balance=200
+        page_balance=210,
+        username="quyen.le",
+        password="88888888"
     ),
     Student(
         student_id="2252026",
         fname="Son",
         lname="Pham Truc",
         email="son.pham@hcmut.edu.vn",
-        page_balance=200
+        page_balance=380,
+        username="son.pham",
+        password="88888888"
     ),
     Student(
         student_id="2252027",
         fname="Tam",
         lname="Hoang Manh",
         email="tam.hoang@hcmut.edu.vn",
-        page_balance=200
+        page_balance=20,
+        username="tam.hoang",
+        password="88888888"
     ),
     Student(
         student_id="2252028",
         fname="Uyen",
         lname="Vu Thi To",
         email="uyen.vu@hcmut.edu.vn",
-        page_balance=200
+        page_balance=48,
+        username="uyen.vu",
+        password="88888888"
     ),
     Student(
         student_id="2252029",
         fname="Vinh",
         lname="Bui Vuong",
         email="vinh.bui@hcmut.edu.vn",
-        page_balance=200
+        page_balance=56,
+        username="vinh.bui",
+        password="88888888"
     ),
     Student(
         student_id="2252030",
         fname="Yen",
         lname="Do Kim",
         email="yen.do@hcmut.edu.vn",
-        page_balance=200
+        page_balance=64,
+        username="yen.do",
+        password="88888888"
     ),
     Student(
         student_id="2252031",
         fname="An",
         lname="Nguyen",
         email="an.nguyen2@hcmut.edu.vn",
-        page_balance=200
+        page_balance=72,
+        username="an.nguyen2",
+        password="88888888"
     ),
     Student(
         student_id="2252032",
         fname="Binh",
         lname="Tran",
         email="binh.tran2@hcmut.edu.vn",
-        page_balance=200
+        page_balance=84,
+        username="binh.tran2",
+        password="88888888"
     ),
     Student(
         student_id="2252033",
         fname="Chien",
         lname="Le Ngoc Minh",
         email="chien.le2@hcmut.edu.vn",
-        page_balance=200
+        page_balance=96,
+        username="chien.le2",
+        password="88888888"
     ),
     Student(
         student_id="2252034",
         fname="Anh",
         lname="Ha Minh",
         email="dung.pham2@hcmut.edu.vn",
-        page_balance=200
+        page_balance=107,
+        username="dung.pham2",
+        password="88888888"
     ),
-])
+]
 
 
 class PrinterStatus:

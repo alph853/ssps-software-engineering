@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Delete Printer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CSS (Optional: If you want to use icons) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Center the card vertically and horizontally */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* Optional: Add spacing between buttons */
+        .btn-spacing {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card text-center shadow" style="width: 24rem;">
+            <div class="card-header bg-danger text-white">
+                <i class="bi bi-exclamation-triangle-fill"></i> Xác nhận xoá máy in
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Bạn có chắc chắn muốn xoá máy in này?</h5>
+                <p class="card-text">Hành động này không thể khôi phục.</p>
+                <!-- Display Printer Details -->
+                <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item"><strong>Hãng sản xuất:</strong> {{ printer.brand }}</li>
+                    <li class="list-group-item"><strong>Model:</strong> {{ printer.model }}</li>
+                    <li class="list-group-item"><strong>Vị trí:</strong> Cơ sở {{ printer.campus }} - ({{ printer.building }} {{ printer.room }})</li>
+                </ul>
+                <!-- Confirmation Form -->
+                <form method="post">
+                    {% csrf_token %}
+                    <a href="{% url 'spso_printer_list' %}" class="btn btn-secondary btn-spacing">
+                        <i class="bi bi-x-circle"></i> Hủy
+                    </a>
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash-fill"></i> Xác nhận
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS (Optional: For interactive components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

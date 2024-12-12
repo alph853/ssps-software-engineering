@@ -132,7 +132,7 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2><strong>Thực hiện dịch vụ in</strong></h2>
-        <a href="{% url 'spso_printer_list' %}" class="btn btn-secondary">Quay lại</a>
+        <a href="{% url 'student_home' pk=student_id %}" class="btn btn-secondary">Quay lại</a>
     </div>
     <form method="post" enctype="multipart/form-data" class="mt-4 dropzone" id="printjob-dropzone">
         {% csrf_token %}
@@ -165,6 +165,17 @@
             In 1 mặt
             {{ form.one_sided }}
         </div>
+        {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+            <div class="alert alert-danger" role="alert">
+            {% else %}
+            <div class="alert alert-success" role="alert">
+            {% endif %}
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% endif %}
         <div class="text-end">
             <button  type="submit" class="btn btn-primary">Xác nhận in</button>
         </div>

@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="styles.css">
   <!-- Include Google Fonts (example: Inter Tight) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     body {
       font-family: 'Inter Tight', Arial, sans-serif;
@@ -76,38 +78,52 @@
 </head>
 <body>
   <div class="container">
-    <h1>Buy More Pages</h1>
-    <p>Select the number of pages you'd like to purchase below.</p>
-    <div class="info-group">
-      <span>Current Pages Owned: <strong id="current-pages">100</strong></span>
-      <span>Total Cost: <strong id="total-cost" class="cost">$0</strong></span>
+    <a href="{% url 'student_home' pk=student_id %}" class="btn btn-secondary">Quay lại</a>
+    <div>
+        <h1>Trang mua thêm giấy</h1>
     </div>
-    <form action="/process-payment" method="POST">
+    <p>Chọn số lượng giấy muốn giao dịch</p>
+    <div class="info-group">
+      <span>Số giấy sau khi giao dịch: <strong id="current-pages">{{ page_balance }}</strong></span>
+      <span>Chi phí giao dịch: <strong id="total-cost" class="cost">0 đ</strong></span>
+    </div>
+    <form action="" method="POST">
+      {% csrf_token %}
       <div class="form-group">
-        <label for="pages">Number of Pages</label>
+        <label for="pages">Nhập số trang</label>
         <input type="number" id="pages" name="pages" min="1" max="1000" required>
       </div>
-      <button type="submit">Proceed to Payment</button>
+      {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+      {% endif %}
+      <button type="submit">Xác nhận giao dịch</button>
     </form>
   </div>
 
   <script>
     // Initial current pages and price per page
-    const currentPages = 100; // Example value
-    const pricePerPage = 0.05; // Example cost per page
+    const currentPages = {{ page_balance }}; // Example value
+    const pricePerPage = 200; // Example cost per page
 
     // Update current pages display
-    document.getElementById("current-pages").textContent = currentPages;
 
     // Event listener for dynamic cost calculation
     const pagesInput = document.getElementById("pages");
     const totalCostDisplay = document.getElementById("total-cost");
+    const currentPagesDisplay = document.getElementById("current-pages");
 
     pagesInput.addEventListener("input", () => {
       const pagesToBuy = parseInt(pagesInput.value) || 0;
-      const totalCost = (pagesToBuy * pricePerPage).toFixed(2);
-      totalCostDisplay.textContent = `$${totalCost}`;
+      const totalCost = (pagesToBuy * pricePerPage).toLocaleString('de-DE');
+      totalCostDisplay.textContent = `${totalCost} đ`;
+      currentPagesDisplay.textContent = `${currentPages + pagesToBuy}`;
     });
   </script>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </html>
